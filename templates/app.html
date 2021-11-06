@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main_content %}
+
+<form action="" method = "POST" novalidate>
+<section id = "mn">
+    {{form.hidden_tag()}}
+    {{form.timeDate.label}}
+    {{form.timeDate()}}
+    {% for error in form.timeDate.errors %}
+        {{ error }}
+    {% endfor %}
+</section>
+<section id = "mn">
+    <br>
+    {{form.timeHM.label}}
+    {{form.timeHM()}}
+    {% for error in form.timeHM.errors %}
+        {{ error }}
+    {% endfor %}
+    {{form.submit()}}
+</section>
+</form>
+{{message}}
+{% endblock %}
