@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h1> Your Profile </h1>
+
+
+<table>
+    <tr>
+        <th colspan = "3" scope = "col">Sitting disease survey</th>
+    </tr>
+    <tr>
+        <th>Result:</th>
+        <th>Checking Date</th>
+        <th>Next Checking Date</th>
+
+    </tr>
+    {% for i in user_result_and_date %}
+    <tr> 
+        <td>{{i["act_result"]}} </td>
+        <td>{{i["check_date"]}}</td>
+        <td>{{i["next_check"]}} </td>
+    </tr>
+{% endfor %}
+
+</table>
+<br>
+<table>
+    <tr>
+        <th colspan = "5" scope = "col">Your Appointments Details</th>
+    </tr>
+    <tr>
+        <th>User name</th>
+        <th>User ID</th>
+        <th>Sport</th>
+        <th>Appointment Date</th>
+        <th>Appointment time</th>
+    </tr>
+    {% for info in userInfo %}
+    <tr> 
+        {% for userName in user_full_name %}
+        <td>{{userName["user_name"]}} {{userName["user_surname"]}}</td>
+        {% endfor %}
+        <td>{{ info["user_id"] }}</td>
+        <td>{{ info["sport_name"] }}</td>
+        <td>{{ info["timeDate"] }}</td>
+        <td>{{ info["timeHM"] }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+<a href="{{url_for('reset')}}"> Reset your password ? </a>
+
+{% endblock %}

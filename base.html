@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "utf-8"/>
+    <title> Sport gym</title>
+    <link rel="stylesheet" href="static/ca1.css"/>
+    <link rel="icon" href="static/logo.png"/>
+</head>
+<body>
+    <header>
+        <img src="static/logo.png" alt=""> SH gym <img src="static/logo.png" alt="">
+        {% if g.user %}
+        <section>
+            <a id = "mp"href="{{url_for('index')}}"> Home page </a>
+            <a id = "mo" href="{{ url_for('profile') }}">Profile</a>
+            <a id = "mn" href="{{ url_for('logout') }}">logout</a>
+        </section>
+
+        {% else %}
+        <section>
+            <a id = "mn" href="{{url_for('index')}}"> Home page </a>
+            <a  id = "mn"href="{{ url_for('login') }}">login</a>
+            <a id = "mn"href="{{ url_for('register') }}">Register</a>
+        </section>
+        {% endif %}
+    </header>
+    {% block main_content %}
+    {% endblock %}
+
+
+</body>
+</html>
